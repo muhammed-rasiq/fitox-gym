@@ -1,4 +1,5 @@
 import Image from "next/image";
+import AboutPage from "./aboutUs/page";
 
 export default function Home() {
   return (
@@ -6,27 +7,8 @@ export default function Home() {
    
     <div className="min-h-screen bg-black text-white">
 
-      {/* Navbar */}
-      <nav className="flex items-center justify-between px-6 md:px-12 py-6">
-        <h1 className="text-2xl font-bold">
-          POWER<span className="text-red-500">GYM</span>
-        </h1>
-
-        <div className="hidden md:flex gap-8 text-gray-300">
-          <a href="#" className="text-red-500">Home</a>
-          <a href="#" className="hover:text-red-500">About</a>
-          <a href="#" className="hover:text-red-500">Programs</a>
-          <a href="#" className="hover:text-red-500">Contact</a>
-        </div>
-
-        <button className="hidden md:block bg-red-500 px-6 py-3 rounded-lg font-semibold hover:bg-red-600">
-          Join Now
-        </button>
-
-        <button className="md:hidden text-2xl">
-          ☰
-        </button>
-      </nav>
+     
+      
 
       {/* Hero */}
       <section className="min-h-[calc(100vh-88px)] flex flex-col md:flex-row">
@@ -66,11 +48,11 @@ export default function Home() {
 
             <div className="flex flex-col sm:flex-row gap-4 mt-8">
 
-              <button className="bg-red-500 px-7 py-3 rounded-lg font-semibold hover:bg-red-600 transition">
+              <button className="bg-red-500 px-7 py-3 rounded-lg font-semibold hover:bg-red-600 transition cursor-pointer">
                 Get Started
               </button>
 
-              <button className="border border-gray-600 px-7 py-3 rounded-lg font-semibold hover:bg-white hover:text-black transition">
+              <button className="border border-gray-600 px-7 py-3 rounded-lg font-semibold hover:bg-white hover:text-black transition cursor-pointer">
                 Learn More
               </button>
 
@@ -80,7 +62,62 @@ export default function Home() {
         </div>
 
       </section>
+
+      {/* banner */}
+
+         <section className="border-y border-gray-800 bg-black px-6 md:px-16 py-12 mt-10">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-10 text-center">
+
+          <div>
+            <h3 className="text-5xl font-black text-red-500">
+              15K+
+            </h3>
+            <p className="text-gray-400 mt-3 font-medium">
+              ACTIVE MEMBERS
+            </p>
+          </div>
+
+          <div>
+            <h3 className="text-5xl font-black text-red-500">
+              80+
+            </h3>
+            <p className="text-gray-400 mt-3 font-medium">
+             Reviews
+            </p>
+          </div>
+
+          <div>
+            <h3 className="text-5xl font-black text-red-500">
+              50+
+            </h3>
+            <p className="text-gray-400 mt-3 font-medium">
+              EXPERT COACHES
+            </p>
+          </div>
+
+          <div>
+            <h3 className="text-5xl font-black text-red-500">
+              24/7
+            </h3>
+            <p className="text-gray-400 mt-3 font-medium">
+              GYM ACCESS
+            </p>
+          </div>
+
+        </div>
+      </section>
+
+      <div className="mt-15">
+        <AboutPage/>
+      </div>
+
+
+
+
+
     </div>
+
+   
    
    </>
   );
