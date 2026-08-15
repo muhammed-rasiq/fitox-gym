@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import React from 'react';
 
 function AboutPage() {
@@ -43,9 +44,15 @@ function AboutPage() {
             goals and stay motivated throughout your journey.
           </p>
 
-          <button className="bg-red-500 hover:bg-red-600 px-8 py-4 rounded-lg font-bold text-lg transition cursor-pointer">
+          <Link href={'/join'}>
+          
+           <button className="bg-red-500 hover:bg-red-600 px-8 py-4 rounded-lg font-bold text-lg transition cursor-pointer">
             Join Us
           </button>
+          
+          </Link>
+
+         
         </div>
 
       </div>

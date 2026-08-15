@@ -13,14 +13,18 @@ export default function Navbar() {
            <div className="hidden md:flex gap-8 text-gray-300">
              <Link href="/" className="text-red-500">Home</Link>   
              <Link href="/aboutUs" className="hover:text-red-500">About</Link>
-             <a href="#" className="hover:text-red-500">Trainers</a>
-             <a href="#" className="hover:text-red-500">Review</a> 
-             <a href="#" className="hover:text-red-500">Membership</a>
+             <Link href="/Trainers" className="hover:text-red-500">Trainers</Link>
+             <Link href="/ClientReview" className="hover:text-red-500">Review</Link> 
+             <Link href="/Membership" className="hover:text-red-500">Membership</Link>
            </div>
-   
-           <button className="hidden md:block bg-red-500 px-6 py-3 rounded-lg font-semibold hover:bg-red-600 text-white cursor-pointer">
-             Join Now
+
+           <Link href={'/join'}>
+            <button className="hidden md:block bg-red-500 px-6 py-3 rounded-lg font-semibold hover:bg-red-600 text-white cursor-pointer">
+            Join Now
            </button>
+           </Link>
+   
+          
    
            <button className="md:hidden text-2xl">
              ☰

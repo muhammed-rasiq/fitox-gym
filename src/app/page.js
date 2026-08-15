@@ -1,5 +1,8 @@
 import Image from "next/image";
 import AboutPage from "./aboutUs/page";
+import TrainersPage from "./Trainers/page";
+import ClientReviewPage from "./ClientReview/page";
+import MembershipPage from "./Membership/page";
 
 export default function Home() {
   return (
@@ -111,6 +114,21 @@ export default function Home() {
         <AboutPage/>
       </div>
 
+      <div className="mt-10">
+        <TrainersPage/>
+      </div>
+
+
+       <div className="mt-10">
+        <ClientReviewPage/>
+      </div>
+
+      <div className="mt-10">
+       <MembershipPage/>
+      </div>
+
+
+      
 
 
 
