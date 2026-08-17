@@ -1,36 +1,45 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+FITOX GYM
 
-## Getting Started
+FIT OX GYM is a gym website built with Next.js and Tailwind CSS for the FITOX GYM business.
 
-First, run the development server:
+The website allows users to learn about the gym, explore membership plans, submit membership requests, and share their experiences. It also provides an admin side for the gym owner to manage membership leads.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Features
+User Side
+🏋️ View information about FIT OX GYM
+📋 Explore gym membership plans
+📝 Apply for a gym membership
+👤 User registration and login
+⭐ Share gym experiences and reviews
+📱 Fully responsive design
+ℹ️ Learn more about the gym and its services
+Admin Side
+🔐 Admin login
+📊 Manage membership leads
+👥 View users who are interested in membership
+📋 View membership details
+🔄 Manage lead status
+📈 Manage gym-related user information
+Pages
+Home
+About Us
+Membership
+Register
+Login
+Join Membership
+User Experience / Reviews
+Admin Dashboard
+Tech Stack
+Frontend
+Next.js
+React.js
+Tailwind CSS
+JavaScript
+Backend / Database
+Node.js
+Express.js
+MongoDB
+Mongoose
+Project Purpose
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The main purpose of this project is to create a complete web presence for FIT OX GYM, where potential members can discover the gym and submit membership requests, while the gym owner can manage and track those membership leads through an admin dashboard.
