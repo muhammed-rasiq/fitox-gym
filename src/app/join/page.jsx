@@ -1,6 +1,32 @@
-import React from 'react';
+'use client';
+import React, { useState } from 'react';
 
 function JoinPage() {
+  
+  const [userData,setUserData]=useState({
+    userName:'',
+    Plan:'',
+    PhoneNumber:''
+  })
+
+  const handleUserData = async(e)=>{
+     e.preventDefault();
+
+    const response = await fetch('/api/join',{
+      method:'POST',
+      headers:{
+       "Content-Type": "application/json"
+      },
+      body:JSON.stringify(userData)
+    })
+
+    const data = await response.json()
+    console.log(data)
+
+    
+
+  }
+
   return (
    <>
    
@@ -20,7 +46,7 @@ function JoinPage() {
         </div>
 
         {/* Form */}
-        <form className="space-y-5">
+        <form className="space-y-5" onSubmit={handleUserData}>
 
           {/* Name */}
           <div>
@@ -32,6 +58,7 @@ function JoinPage() {
               type="text"
               placeholder="Enter your name"
               className="w-full bg-zinc-800 border border-zinc-700 rounded-lg px-4 py-3 outline-none focus:border-red-500"
+              onChange={(e)=>setUserData({...userData,userName:e.target.value})}
             />
           </div>
 
@@ -43,6 +70,7 @@ function JoinPage() {
 
             <select
               className="w-full bg-zinc-800 border border-zinc-700 rounded-lg px-4 py-3 outline-none focus:border-red-500"
+               onChange={(e)=>setUserData({...userData,Plan:e.target.value})}
             >
               <option value="">Select a plan</option>
               <option value="basic">Basic Plan</option>
@@ -61,13 +89,15 @@ function JoinPage() {
               type="tel"
               placeholder="Enter your phone number"
               className="w-full bg-zinc-800 border border-zinc-700 rounded-lg px-4 py-3 outline-none focus:border-red-500"
+               onChange={(e)=>setUserData({...userData,PhoneNumber:e.target.value})}
             />
           </div>
 
           {/* Submit */}
           <button
             type="submit"
-            className="w-full bg-red-500 hover:bg-red-600 text-white font-semibold py-3 rounded-lg transition"
+            className="w-full bg-red-500 hover:bg-red-600 text-white font-semibold py-3 rounded-lg transition cursor-pointer"
+            
           >
             Submit
           </button>
