@@ -1,6 +1,40 @@
-import React from 'react';
+'use client'
+import React, { useState } from 'react';
 
 function ClientReviewPage() {
+
+  const [rating,setRating]=useState(0)
+  const [reviewData,setReviewData]=useState({
+    ClientRating:"",
+    message:""
+  })
+
+  const handleReview = async()=>{
+
+    const response = await fetch('/api/ClientReview',{
+      method:'POST',
+      headers:{
+        'Content-Type': 'application/json'
+      },
+      body:JSON.stringify(reviewData)
+
+    })
+
+    const data = await response.json()
+
+    console.log(data)
+
+    if(response.status===201){
+      alert('Review Sumbited')
+      
+    }
+    setReviewData({ ClientRating:"",
+    message:""})
+    setRating(0)
+
+  }
+
+
   return (
     <>
     
@@ -49,8 +83,10 @@ function ClientReviewPage() {
             </div>
 
             {/* Stars */}
-            <div className="text-yellow-400 text-xl mt-4">
-              ★ ★ ★ ★ ★
+
+
+           <div className="text-yellow-400 text-xl mt-4">
+               ★ ★ ★ ★ ★
             </div>
 
             <p className="text-gray-400 leading-7 mt-3">
@@ -112,32 +148,7 @@ function ClientReviewPage() {
           </p>
 
 
-          {/* Name */}
-          {/* <div className="mt-6">
-            <label className="block mb-2 font-medium">
-              Name
-            </label>
-
-            <input
-              type="text"
-              placeholder="Enter your name"
-              className="w-full bg-transparent border border-gray-700 rounded-lg px-4 py-3 outline-none focus:border-red-500"
-            />
-          </div> */}
-
-
-          {/* Email */}
-          {/* <div className="mt-5">
-            <label className="block mb-2 font-medium">
-              Email
-            </label>
-
-            <input
-              type="email"
-              placeholder="Enter your email"
-              className="w-full bg-transparent border border-gray-700 rounded-lg px-4 py-3 outline-none focus:border-red-500"
-            />
-          </div> */}
+        
 
 
           {/* Rating */}
@@ -146,8 +157,33 @@ function ClientReviewPage() {
               Rating
             </label>
 
+            {
+              [1,2,3,4,5].map((star)=>(
+                <button key={star} value={star} onClick={()=>{
+          
+           if (rating === star) {
+          setRating(0);
+          setReviewData({
+            ...reviewData,
+            ClientRating: 0
+          });
+        } else {
+          setRating(star);
+          setReviewData({
+            ...reviewData,
+            ClientRating: star
+          });
+        }
+
+
+                }
+                  } className='text-yellow-400 text-3xl cursor-pointer'
+                  > {star<=rating ? "★" : "☆"}</button>
+              ))
+            }
+
             <div className="text-yellow-400 text-2xl">
-              ★ ★ ★ ★ ★
+            
             </div>
           </div>
 
@@ -162,12 +198,14 @@ function ClientReviewPage() {
               rows="5"
               placeholder="Write your review..."
               className="w-full bg-transparent border border-gray-700 rounded-lg px-4 py-3 outline-none focus:border-red-500 resize-none"
+              onChange={(e)=>setReviewData({...reviewData,message:e.target.value})}
+              value={reviewData.message}
             ></textarea>
           </div>
 
 
           {/* Button */}
-          <button className="w-full bg-red-500 hover:bg-red-600 py-3 rounded-lg font-bold mt-6 transition cursor-pointer">
+          <button className="w-full bg-red-500 hover:bg-red-600 py-3 rounded-lg font-bold mt-6 transition cursor-pointer" onClick={handleReview}>
             Submit Review
           </button>
 

@@ -12,7 +12,8 @@ const userScheama = new mongoose.Schema({
     PhoneNumber:{
         type:String,
         required:true
-    }
+    },
+    
 })
 
 const User = mongoose.model('Users',userScheama)
