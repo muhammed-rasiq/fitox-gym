@@ -1,5 +1,5 @@
 'use client'
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 function ClientReviewPage() {
 
@@ -8,6 +8,8 @@ function ClientReviewPage() {
     ClientRating:"",
     message:""
   })
+
+  const [getReview,setGetReview]=useState([])
 
   const handleReview = async()=>{
 
@@ -34,6 +36,23 @@ function ClientReviewPage() {
 
   }
 
+  const handleGetReview = async()=>{
+
+    const response = await fetch('/api/ClientReview',{
+      method:'GET', 
+
+    })
+
+    const addExperience =  await response.json()
+    setGetReview(addExperience)
+    console.log(addExperience)
+
+  }
+
+  useEffect(()=>{
+    handleGetReview()
+  },[])
+
 
   return (
     <>
@@ -53,87 +72,47 @@ function ClientReviewPage() {
 
 
       {/* Main Content */}
-      <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12">
+      <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 ">
 
 
         {/* Left Side - Reviews */}
+        
+
         <div className="space-y-8">
 
-          {/* Review 1 */}
-          <div className="border border-gray-800 rounded-xl p-6">
+  <div className="max-h-96 overflow-y-auto space-y-8 pr-2">
 
-            <div className="flex items-center gap-4">
+    {
+      getReview.length > 0
+        ? getReview.map((item) => (
+            <div
+              key={item._id}
+              className="border border-gray-800 rounded-xl p-6"
+            >
 
-              <img
-                src="/client1.jpg"
-                alt="Client"
-                className="w-16 h-16 rounded-full object-cover"
-              />
+              {
+                ["★", "★", "★", "★", "★"].map((star, index) => (
+                  <span
+                    key={index}
+                    className="text-yellow-400 text-xl"
+                  >
+                    {index < Number(item.ClientRating) ? "★" : "☆"}
+                  </span>
+                ))
+              }
 
-              <div>
-                <h3 className="font-bold">
-                  Razip
-                </h3>
-
-                <p className="text-gray-500 text-sm">
-                  razipanagattuthodi@gmail.com
-                </p>
-              </div>
-
-            </div>
-
-            {/* Stars */}
-
-
-           <div className="text-yellow-400 text-xl mt-4">
-               ★ ★ ★ ★ ★
-            </div>
-
-            <p className="text-gray-400 leading-7 mt-3">
-              FITOX GYM has completely changed my fitness journey.
-              The trainers are supportive, the equipment is excellent,
-              and the atmosphere keeps me motivated every day.
-            </p>
-
-          </div>
-
-
-          {/* Review 2 */}
-          <div className="border border-gray-800 rounded-xl p-6">
-
-            <div className="flex items-center gap-4">
-
-              <img
-                src="/client2.jpg"
-                alt="Client"
-                className="w-16 h-16 rounded-full object-cover"
-              />
-
-              <div>
-                <h3 className="font-bold">
-                  Arjun
-                </h3>
-
-                <p className="text-gray-500 text-sm">
-                  arjun@gmail.com
-                </p>
-              </div>
+              <p className="text-gray-400 leading-7 mt-3">
+                {item.message}
+              </p>
 
             </div>
+          ))
+        : "No Review"
+    }
 
-            <div className="text-yellow-400 text-xl mt-4">
-              ★ ★ ★ ★ ★
-            </div>
+  </div>
 
-            <p className="text-gray-400 leading-7 mt-3">
-              Amazing gym with great trainers and a friendly environment.
-              I have seen a big improvement in my strength and confidence
-              since joining FITOX GYM.
-            </p>
-
-          </div>
-
-        </div>
+</div>
 
 
         {/* Right Side - Add Review */}

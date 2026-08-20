@@ -21,3 +21,18 @@ export async function POST(req){
 
 
 }
+
+export async function GET(){
+    await dbConnect()
+
+
+    try {
+        const getAllReview = await shareClientReview.find()
+        // console.log(getAllReview)
+        return Response.json(getAllReview)
+    } catch (error) {
+        return Response.json({message:error.message},{status:500})
+    }
+
+
+}
