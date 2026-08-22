@@ -25,6 +25,7 @@ export async function POST(req){
 export async function GET(){
     await dbConnect()
 
+    
 
     try {
         const getAllReview = await shareClientReview.find()

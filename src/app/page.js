@@ -1,10 +1,45 @@
+'use client'
 import Image from "next/image";
 import AboutPage from "./aboutUs/page";
 import TrainersPage from "./Trainers/page";
 import ClientReviewPage from "./ClientReview/page";
 import MembershipPage from "./Membership/page";
+import { useEffect, useState } from "react";
 
 export default function Home() {
+
+  const [reviewData,setReviewData]=useState([])
+  const [userData,setUserData]=useState([])
+
+  const handleReview = async()=>{
+    const response = await fetch('/api/ClientReview',{
+      method:'GET',
+                
+    })
+
+    const clientReviewData = await response.json()
+    setReviewData(clientReviewData)
+    // console.log(clientReviewData)
+
+  }
+
+  const handleUser = async()=>{
+    const response = await fetch('/api/join',{
+      method:'GET',
+    })
+
+    const data = await response.json()
+    setUserData(data)
+    console.log(data)
+
+  }
+
+
+  useEffect(()=>{
+    handleReview()
+    handleUser()
+  },[])
+
   return (
    <>
    
@@ -73,7 +108,7 @@ export default function Home() {
 
           <div>
             <h3 className="text-5xl font-black text-red-500">
-              15K+
+              {userData.length >= 20 ?  `${userData.length}+`   : userData.length}
             </h3>
             <p className="text-gray-400 mt-3 font-medium">
               ACTIVE MEMBERS
@@ -82,7 +117,7 @@ export default function Home() {
 
           <div>
             <h3 className="text-5xl font-black text-red-500">
-              80+
+              {reviewData.length >=20 ? `${reviewData.length}+` : reviewData.length}
             </h3>
             <p className="text-gray-400 mt-3 font-medium">
              Reviews
@@ -91,7 +126,7 @@ export default function Home() {
 
           <div>
             <h3 className="text-5xl font-black text-red-500">
-              50+
+              5+
             </h3>
             <p className="text-gray-400 mt-3 font-medium">
               EXPERT COACHES

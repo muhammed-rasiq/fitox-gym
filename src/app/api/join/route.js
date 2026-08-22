@@ -29,3 +29,17 @@ export async function POST(req){
 
 
 }
+
+export async function GET(req){
+
+    await dbConnect()
+
+    try {
+        const getAllUser = await User.find()
+
+        return Response.json(getAllUser)
+
+    } catch (error) {
+        return Response.json({message:error.message},{status:500})
+    }
+}
