@@ -17,7 +17,7 @@ export async function POST(req){
 
         await userData.save()
 
-        return Response.json(userData,{status:200})
+        return Response.json(userData,{status:201})
 
         
 

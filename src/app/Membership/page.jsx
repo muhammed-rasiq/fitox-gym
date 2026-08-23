@@ -153,7 +153,7 @@ function MembershipPage() {
 
           <Link href={'/join'}>
           
-           <button className="w-full border border-red-500 text-red-500 hover:bg-red-500 hover:text-white py-3 rounded-lg font-bold mt-8 transition cursor-pointer">
+           <button  className="w-full border border-red-500 text-red-500 hover:bg-red-500 hover:text-white py-3 rounded-lg font-bold mt-8 transition cursor-pointer">
             Join Now
           </button>
           

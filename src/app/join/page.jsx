@@ -23,6 +23,17 @@ function JoinPage() {
     const data = await response.json()
     console.log(data)
 
+    if(response.status==201){
+      alert('you joined')
+      
+    }
+
+     setUserData({userName:'',
+    Plan:'',
+    PhoneNumber:''})
+
+   
+
     
 
   }
@@ -58,6 +69,7 @@ function JoinPage() {
               type="text"
               placeholder="Enter your name"
               className="w-full bg-zinc-800 border border-zinc-700 rounded-lg px-4 py-3 outline-none focus:border-red-500"
+              value={userData.userName}
               onChange={(e)=>setUserData({...userData,userName:e.target.value})}
             />
           </div>
@@ -71,6 +83,7 @@ function JoinPage() {
             <select
               className="w-full bg-zinc-800 border border-zinc-700 rounded-lg px-4 py-3 outline-none focus:border-red-500"
                onChange={(e)=>setUserData({...userData,Plan:e.target.value})}
+               value={userData.Plan}
             >
               <option value="">Select a plan</option>
               <option value="basic">Basic Plan</option>
@@ -90,6 +103,7 @@ function JoinPage() {
               placeholder="Enter your phone number"
               className="w-full bg-zinc-800 border border-zinc-700 rounded-lg px-4 py-3 outline-none focus:border-red-500"
                onChange={(e)=>setUserData({...userData,PhoneNumber:e.target.value})}
+               value={userData.PhoneNumber}
             />
           </div>
 
