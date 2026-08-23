@@ -1,5 +1,6 @@
 'use client';
-import React, { useState } from 'react';
+import { useSearchParams } from 'next/navigation';
+import React, { useEffect, useState } from 'react';
 
 function JoinPage() {
   
@@ -8,6 +9,8 @@ function JoinPage() {
     Plan:'',
     PhoneNumber:''
   })
+
+ const searchParams = useSearchParams();
 
   const handleUserData = async(e)=>{
      e.preventDefault();
@@ -37,6 +40,19 @@ function JoinPage() {
     
 
   }
+
+  useEffect(()=>{
+    const plan = searchParams.get('plan')
+
+    if(plan){
+      setUserData((prev)=>({
+        ...prev,
+        Plan:plan
+        
+      }))
+    }
+
+  },[searchParams])
 
   return (
    <>
@@ -88,7 +104,7 @@ function JoinPage() {
               <option value="">Select a plan</option>
               <option value="basic">Basic Plan</option>
               <option value="premium">Premium Plan</option>
-              <option value="pro">Elite</option>
+              <option value="Elite">Elite</option>
             </select>
           </div>
 

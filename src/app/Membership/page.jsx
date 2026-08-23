@@ -58,7 +58,7 @@ function MembershipPage() {
             <li>✓ 1 Fitness Assessment</li>
           </ul>
 
-          <Link href={'/join'}>
+          <Link href={'/join?plan=basic'}>
           
            <button className="w-full border border-red-500 text-red-500 hover:bg-red-500 hover:text-white py-3 rounded-lg font-bold mt-8 transition cursor-pointer">
             Join Now
@@ -107,7 +107,7 @@ function MembershipPage() {
             <li>✓ Monthly Fitness Assessment</li>
           </ul>
 
-          <Link href={'/join'}>
+          <Link href={'/join?plan=premium'}>
           
             <button className="w-full bg-red-500 hover:bg-red-600 py-3 rounded-lg font-bold mt-8 transition cursor-pointer">
             Join Now
@@ -151,7 +151,7 @@ function MembershipPage() {
             <li>✓ Weekly Progress Tracking</li>
           </ul>
 
-          <Link href={'/join'}>
+          <Link href={'/join?plan=Elite'}>
           
            <button  className="w-full border border-red-500 text-red-500 hover:bg-red-500 hover:text-white py-3 rounded-lg font-bold mt-8 transition cursor-pointer">
             Join Now
